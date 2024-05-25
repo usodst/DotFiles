@@ -513,9 +513,15 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"mfussenegger/nvim-dap",
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"nvim-neotest/nvim-nio",
+			"mfussenegger/nvim-dap",
+		},
 		config = function()
 			local dap = require("dap")
+			local dapui = require("dapui")
+			dapui.setup()
 
 			-- debuggers
 			local gdb = require("plugins.dap.gdb")
@@ -550,15 +556,6 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>du", function()
 				dap.step_out()
 			end, { desc = "[D]ap o[U]t" })
-		end,
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "nvim-neotest/nvim-nio" },
-		config = function()
-			local dap = require("dap")
-			local dapui = require("dapui")
-			dapui.setup()
 
 			-- open / close ui windows automatically
 			dap.listeners.after.event_initialized["dapui_config"] = function()
