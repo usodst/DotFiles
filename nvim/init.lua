@@ -7,7 +7,7 @@ vim.g.have_nerd_font = false
 require("plugins")
 
 -- Options
-vim.ignorecase = true
+vim.opt.ignorecase = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.hlsearch = true
