@@ -21,6 +21,7 @@ alias clera="clear"
 alias d="docker"
 alias k="kubectl"
 alias kube="kubectl"
+alias ip="ip -c=auto"
 alias l='ls -CF'
 alias la='ls -A'
 alias lg="lazygit"
