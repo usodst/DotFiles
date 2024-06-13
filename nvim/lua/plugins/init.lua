@@ -315,9 +315,29 @@ require("lazy").setup({
 			},
 		},
 		opts = {
+			formatters = {
+				powershell = {
+					command = "pwsh",
+					stdin = true,
+					args = {
+						"-NoProfile",
+						"-c",
+						"Invoke-Formatter",
+						"-ScriptDefinition",
+						"(",
+						"Get-Content",
+						"-Path",
+						"$FILENAME",
+						"-Raw",
+						")",
+						"-Settings",
+						"~/.config/powershell/CodeFormatting.psd1",
+					},
+				},
+			},
 			notify_on_error = false,
 			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true }
+				local disable_filetypes = { c = true, cpp = true, ps1 = true }
 				return {
 					timeout_ms = 500,
 					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -326,6 +346,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				cs = { "csharpier" },
 				lua = { "stylua" },
+				ps1 = { "powershell" },
 			},
 		},
 	},
