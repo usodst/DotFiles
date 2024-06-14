@@ -547,13 +547,17 @@ require("lazy").setup({
 			-- debuggers
 			local gdb = require("plugins.dap.gdb")
 			local coreclr = require("plugins.dap.coreclr")
+			local powershell = require("plugins.dap.powershell")
 
 			dap.adapters.gdb = gdb.adapter
 			dap.adapters.coreclr = coreclr.adapter
+			dap.adapters.powershell = powershell.adapter
 
 			dap.configurations.c = gdb.config
 			dap.configurations.cpp = gdb.config
 			dap.configurations.cs = coreclr.config
+			dap.configurations.ps1 = powershell.config
+			dap.configurations.psm1 = powershell.config
 
 			-- Key bindings
 			vim.keymap.set("n", "<leader>dc", function()
