@@ -2,9 +2,12 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = false
+vim.g.load_plugins = true
 
 -- Plugins
-require("plugins")
+if vim.g.load_plugins then
+	require("plugins")
+end
 
 -- Options
 vim.opt.ignorecase = true
