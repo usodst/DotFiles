@@ -13,3 +13,6 @@ family = "JetBrainsMono Nerd Font"
 [font.bold]
 family = "JetBrainsMono Nerd Font"
 style = "Bold"
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen"}]
