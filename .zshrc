@@ -54,7 +54,6 @@ alias gpush="git push"
 alias gs="git status"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export EDITOR="nvim"
 export PATH=~/.cargo/bin/:$PATH
 export PATH=~/.local/bin/:$PATH
 export LC_ALL=en_US.UTF-8
