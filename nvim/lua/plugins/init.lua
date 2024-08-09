@@ -281,9 +281,10 @@ require("lazy").setup({
 				"black",
 				"clang-format",
 				"csharpier",
+				"netcoredbg",
+				"prettier",
 				"stylua",
 				"yamlfmt",
-				"netcoredbg",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -346,6 +347,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				cs = { "csharpier" },
 				lua = { "stylua" },
+				markdown = { "prettier" },
 				ps1 = { "powershell" },
 			},
 		},
