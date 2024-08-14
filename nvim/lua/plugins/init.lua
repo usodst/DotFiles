@@ -348,6 +348,8 @@ require("lazy").setup({
 				cs = { "csharpier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
+				jsonc = { "prettier" },
+				json = { "prettier" },
 				ps1 = { "powershell" },
 			},
 		},
