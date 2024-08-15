@@ -243,6 +243,17 @@ require("lazy").setup({
 				},
 				powershell_es = {
 					bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+					settings = {
+						powershell = {
+							codeFormatting = {
+								whitespaceAroundPipe = true,
+								openBraceOnSameLine = true,
+								ignoreOneLineBlock = true,
+								newLineAfterOpenBrace = true,
+								newLineAfterCloseBrace = true,
+							},
+						},
+					},
 				},
 				azure_pipelines_ls = {
 					settings = {
@@ -316,32 +327,16 @@ require("lazy").setup({
 			},
 		},
 		opts = {
-			formatters = {
-				powershell = {
-					command = "pwsh",
-					stdin = true,
-					args = {
-						"-NoProfile",
-						"-c",
-						"Invoke-Formatter",
-						"-ScriptDefinition",
-						"(",
-						"Get-Content",
-						"-Path",
-						"$FILENAME",
-						"-Raw",
-						")",
-						"-Settings",
-						"~/.config/powershell/CodeFormatting.psd1",
-					},
-				},
-			},
 			notify_on_error = false,
 			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true, ps1 = true }
+				local disable_filetypes = { "c", "cpp" }
+				if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
+					return
+				end
+
 				return {
 					timeout_ms = 500,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+					lsp_format = "fallback",
 				}
 			end,
 			formatters_by_ft = {
@@ -350,7 +345,6 @@ require("lazy").setup({
 				markdown = { "prettier" },
 				jsonc = { "prettier" },
 				json = { "prettier" },
-				ps1 = { "powershell" },
 			},
 		},
 	},
