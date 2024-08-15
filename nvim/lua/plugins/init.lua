@@ -246,11 +246,15 @@ require("lazy").setup({
 					settings = {
 						powershell = {
 							codeFormatting = {
-								whitespaceAroundPipe = true,
-								openBraceOnSameLine = true,
+								alignPropertyValuePairs = true,
+								autoCorrectAliases = true,
 								ignoreOneLineBlock = true,
-								newLineAfterOpenBrace = true,
 								newLineAfterCloseBrace = true,
+								newLineAfterOpenBrace = true,
+								openBraceOnSameLine = true,
+								pipelineIndentationStyle = "IncreaseIndentationForFirstPipeline",
+								useConstantStrings = true,
+								whitespaceAroundPipe = true,
 							},
 						},
 					},
