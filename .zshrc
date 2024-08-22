@@ -37,7 +37,7 @@ alias ip="ip -c=auto"
 alias l='ls -CF'
 alias la='ls -A'
 alias lg="lazygit"
-alias ll='ls -alF'
+alias ll='ls -alFh'
 alias ls='ls --color=auto'
 alias tf="terraform"
 alias vim="nvim"
