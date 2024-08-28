@@ -485,55 +485,53 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"gsuuon/model.nvim",
-
-		-- Don't need these if lazy = false
-		cmd = { "M", "Model", "Mchat" },
-		init = function()
-			vim.filetype.add({
-				extension = {
-					mchat = "mchat",
-				},
-			})
-		end,
-		ft = "mchat",
-
-		keys = {
-			{ "<C-m>d", ":Mdelete<cr>", mode = "n" },
-			{ "<C-m>s", ":Mselect<cr>", mode = "n" },
-			{ "<C-m><space>", ":Mchat<cr>", mode = "n" },
-			{ "<C-m>c", ":Mchat ollama:starling<cr>", mode = "n" },
-		},
-
-		-- To override defaults add a config field and call setup()
-
-		config = function()
-			local ollama = require("model.providers.ollama")
-			local starters = require("model.prompts.chats")
-			require("model").setup({
-				default_prompt = {
-					provider = ollama,
-					params = {
-						model = "starling-lm",
-					},
-					options = {
-						url = "http://localhost:11434",
-					},
-					builder = function(input)
+		"yetone/avante.nvim",
+		event = "VeryLazy",
+		build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
+		opts = {
+			provider = "ollama",
+			vendors = {
+				provider = "ollama",
+				ollama = {
+					["local"] = true,
+					endpoint = "127.0.0.1:11434/v1",
+					model = "starling-lm",
+					parse_curl_args = function(opts, code_opts)
 						return {
-							prompt = "GPT4 Correct User: " .. input .. "<|end_of_turn|>GPT4 Correct Assistant: ",
+							url = opts.endpoint .. "/chat/completions",
+							headers = {
+								["Accept"] = "application/json",
+								["Content-Type"] = "application/json",
+							},
+							body = {
+								model = opts.model,
+								messages = require("avante.providers").copilot.parse_message(code_opts), -- you can make your own message, but this is very advanced
+								max_tokens = 2048,
+								stream = true,
+							},
 						}
 					end,
+					parse_response_data = function(data_stream, event_state, opts)
+						require("avante.providers").openai.parse_response(data_stream, event_state, opts)
+					end,
 				},
-				chats = {
-					["ollama:starling"] = vim.tbl_deep_extend("force", starters["ollama:starling"], {
-						options = {
-							url = "http://localhost:11434",
-						},
-					}),
+			},
+		},
+
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			--- The below is optional, make sure to setup it properly if you have lazy=true
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					file_types = { "markdown", "Avante" },
 				},
-			})
-		end,
+				ft = { "markdown", "Avante" },
+			},
+		},
 	},
 	{
 		"rcarriga/nvim-dap-ui",
