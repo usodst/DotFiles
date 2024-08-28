@@ -451,6 +451,7 @@ require("lazy").setup({
 				"dockerfile",
 				"lua",
 				"markdown",
+				"markdown_inline",
 				"python",
 				"regex",
 				"terraform",
