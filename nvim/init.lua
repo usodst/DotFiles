@@ -42,3 +42,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+-- File type detection
+vim.filetype.add({
+	extension = {
+		tf = "terraform",
+	},
+	filename = {
+		["[d|D]ocker[Ff]ile"] = "dockerfile",
+	},
+})
