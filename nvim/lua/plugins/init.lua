@@ -487,6 +487,35 @@ require("lazy").setup({
 	},
 	{
 		"yetone/avante.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+			--- The below is optional, make sure to setup it properly if you have lazy=true
+			{
+				"MeanderingProgrammer/render-markdown.nvim",
+				opts = {
+					file_types = { "markdown", "Avante" },
+				},
+				ft = { "markdown", "Avante" },
+			},
+			{
+				-- support for image pasting
+				"HakonHarnes/img-clip.nvim",
+				event = "VeryLazy",
+				opts = {
+					-- recommended settings
+					default = {
+						embed_image_as_base64 = false,
+						prompt_for_file_name = false,
+						drag_and_drop = {
+							insert_mode = true,
+						},
+					},
+				},
+			},
+		},
 		event = "VeryLazy",
 		build = "make", -- This is Optional, only if you want to use tiktoken_core to calculate tokens count
 		opts = {
@@ -516,21 +545,6 @@ require("lazy").setup({
 						require("avante.providers").openai.parse_response(data_stream, event_state, opts)
 					end,
 				},
-			},
-		},
-
-		dependencies = {
-			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-			"stevearc/dressing.nvim",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-			--- The below is optional, make sure to setup it properly if you have lazy=true
-			{
-				"MeanderingProgrammer/render-markdown.nvim",
-				opts = {
-					file_types = { "markdown", "Avante" },
-				},
-				ft = { "markdown", "Avante" },
 			},
 		},
 	},
