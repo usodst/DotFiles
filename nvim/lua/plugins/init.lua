@@ -229,6 +229,7 @@ require("lazy").setup({
 			local servers = {
 				bashls = {},
 				clangd = {},
+				cmake = {},
 				csharp_ls = {},
 				cssls = {},
 				docker_compose_language_service = {},
