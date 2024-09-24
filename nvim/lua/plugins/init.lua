@@ -282,6 +282,7 @@ require("lazy").setup({
 						},
 					},
 				},
+				nil_ls = {},
 				-- yaml_ls = {
 				-- 	settings = {
 				-- 		yaml = {
