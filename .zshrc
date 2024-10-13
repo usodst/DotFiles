@@ -63,4 +63,4 @@ export LANG=en_US.UTF-8
 set -o vi
 
 # Enable oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/tokyonight_storm.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/nordtron.omp.json)"
