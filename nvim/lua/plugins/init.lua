@@ -52,6 +52,10 @@ require("lazy").setup({
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
 		"arcticicestudio/nord-vim",
+		priority = 1000,
+		init = function()
+			vim.cmd.colorscheme("nord")
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -620,10 +624,6 @@ require("lazy").setup({
 	},
 	{
 		"folke/tokyonight.nvim",
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("tokyonight-night")
-		end,
 	},
 	{
 		"stevearc/oil.nvim",
