@@ -623,6 +623,9 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>du", function()
 				dap.step_out()
 			end, { desc = "[D]ap o[U]t" })
+			vim.keymap.set("n", "<leader>dx", function()
+				dapui.close()
+			end, { desc = "[D]apUI close" })
 
 			-- open / close ui windows automatically
 			dap.listeners.after.event_initialized["dapui_config"] = function()
