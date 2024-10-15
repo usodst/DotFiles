@@ -371,10 +371,11 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				cs = { "csharpier" },
+				json = { "prettier" },
+				jsonc = { "prettier" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				jsonc = { "prettier" },
-				json = { "prettier" },
+				xml = { "prettier" },
 			},
 		},
 	},
