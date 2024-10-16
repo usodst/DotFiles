@@ -51,7 +51,7 @@ require("lazy").setup({
 	},
 	{ "numToStr/Comment.nvim", opts = {} },
 	{
-		"arcticicestudio/nord-vim",
+		"shaunsingh/nord.nvim",
 		priority = 1000,
 		init = function()
 			vim.cmd.colorscheme("nord")
