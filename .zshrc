@@ -31,14 +31,15 @@ alias cat="bat"
 alias clar="clear"
 alias clera="clear"
 alias d="docker"
+alias ip="ip -c=auto"
 alias k="kubectl"
 alias kube="kubectl"
-alias ip="ip -c=auto"
 alias l='ls -CF'
 alias la='ls -A'
 alias lg="lazygit"
 alias ll='ls -alFh'
 alias ls='ls --color=auto'
+alias lynx="lynx -vikeys"
 alias tf="terraform"
 alias vim="nvim"
 
