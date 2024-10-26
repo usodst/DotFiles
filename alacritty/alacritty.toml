@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/nord.toml"]
+general.import = ["~/.config/alacritty/nord.toml"]
 
 [window]
 opacity = 0.7
