@@ -5,13 +5,6 @@ return {
 		current_line_blame_opts = {
 			delay = 500,
 		},
-		signs = {
-			add = { text = "+" },
-			change = { text = "~" },
-			delete = { text = "_" },
-			topdelete = { text = "‾" },
-			changedelete = { text = "~" },
-		},
 		on_attach = function(bufnr)
 			local gitsigns = require("gitsigns")
 			vim.keymap.set("n", "<leader>gs", function()
