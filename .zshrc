@@ -65,3 +65,6 @@ set -o vi
 
 # Enable oh-my-posh
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/nordtron.omp.json)"
+
+# Colors for man pages
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
