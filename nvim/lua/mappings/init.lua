@@ -16,5 +16,9 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Quick Fix
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>", { desc = "Move down one quickfix entry" })
+vim.keymap.set("n", "<M-k>", "<cmd>cprevious<CR>", { desc = "Move up one quickfix entry" })
+
 -- Buffers
 vim.keymap.set("n", "<leader>x", "<CMD>bp<bar>sp<bar>bn<bar>bd!<CR>", { desc = "Delete the current buffer" })
