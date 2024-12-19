@@ -42,6 +42,7 @@ alias ls='ls --color=auto'
 alias lynx="lynx -vikeys"
 alias tf="terraform"
 alias vim="nvim"
+alias v="nvim"
 
 # Git aliases
 alias ga="git add"
