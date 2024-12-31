@@ -29,6 +29,9 @@ vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.updatetime = 250
 
+-- Disable LSP Logging
+vim.lsp.set_log_level("OFF")
+
 -- Mappings
 require("mappings")
 
