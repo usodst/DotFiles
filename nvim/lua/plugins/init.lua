@@ -6,8 +6,8 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	require("plugins.avante-nvim"),
 	require("plugins.Comment-nvim"),
+	require("plugins.avante-nvim"),
 	require("plugins.conform-nvim"),
 	require("plugins.gitsigns-nvim"),
 	require("plugins.harpoon"),
@@ -15,6 +15,7 @@ require("lazy").setup({
 	require("plugins.nord-nvim"),
 	require("plugins.nvim-autopairs"),
 	require("plugins.nvim-cmp"),
+	require("plugins.nvim-colorizer"),
 	require("plugins.nvim-dap-ui"),
 	require("plugins.nvim-lspconfig"),
 	require("plugins.nvim-treesitter"),
