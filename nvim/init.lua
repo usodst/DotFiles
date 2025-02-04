@@ -8,10 +8,10 @@ vim.g.load_lsp = true
 require("plugins")
 
 -- Options
-vim.opt.ignorecase = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.hlsearch = true
+vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.list = true
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
@@ -24,6 +24,7 @@ vim.opt.smartcase = true
 vim.opt.spell = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
 vim.opt.undofile = true
