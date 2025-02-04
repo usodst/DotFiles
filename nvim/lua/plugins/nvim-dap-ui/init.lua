@@ -49,6 +49,9 @@ return {
 		vim.keymap.set("n", "<leader>dx", function()
 			dapui.close()
 		end, { desc = "[D]apUI close" })
+		vim.keymap.set("n", "<leader>dr", function()
+			dap.restart()
+		end, { desc = "[D]ap [R]estart" })
 
 		-- open / close ui windows automatically
 		dap.listeners.after.event_initialized["dapui_config"] = function()
