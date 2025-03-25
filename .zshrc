@@ -40,9 +40,10 @@ alias lg="lazygit"
 alias ll='ls -alFh'
 alias ls='ls --color=auto'
 alias lynx="lynx -vikeys"
+alias t="tmux"
 alias tf="terraform"
-alias vim="nvim"
 alias v="nvim"
+alias vim="nvim"
 
 # Git aliases
 alias ga="git add"
