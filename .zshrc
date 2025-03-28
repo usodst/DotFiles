@@ -54,6 +54,7 @@ alias gco="git checkout"
 alias gf="git fetch -p"
 alias gpull="git pull -r"
 alias gpush="git push"
+alias grc="git rebase --continue"
 alias gs="git status"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
