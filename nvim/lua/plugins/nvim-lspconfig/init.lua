@@ -84,6 +84,15 @@ if vim.g.load_lsp then
 							completion = {
 								callSnippet = "Replace",
 							},
+							diagnostics = {
+								globals = {
+									"vim",
+									"require",
+								},
+							},
+							telemetry = {
+								enable = false,
+							},
 						},
 					},
 				},
