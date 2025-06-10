@@ -4,9 +4,6 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 vim.g.load_lsp = true
 
--- Plugins
-require("plugins")
-
 -- Options
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
@@ -30,6 +27,9 @@ vim.opt.termguicolors = true
 vim.opt.timeoutlen = 300
 vim.opt.undofile = true
 vim.opt.updatetime = 250
+
+-- Plugins
+require("plugins")
 
 -- Disable LSP Logging
 vim.lsp.set_log_level("OFF")
