@@ -16,3 +16,6 @@ style = "Bold"
 
 [keyboard]
 bindings = [{ key = "F11", action = "ToggleFullscreen"}]
+
+[terminal]
+osc52 = "CopyPaste"
