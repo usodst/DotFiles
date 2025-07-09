@@ -26,4 +26,4 @@ vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>", { desc = "Move down one quickfix 
 vim.keymap.set("n", "<M-k>", "<cmd>cprevious<CR>", { desc = "Move up one quickfix entry" })
 
 -- Buffers
-vim.keymap.set("n", "<leader>x", "<CMD>bp<bar>sp<bar>bn<bar>bd!<CR>", { desc = "Delete the current buffer" })
+vim.keymap.set("n", "<leader>x", "<CMD>bd!<CR>", { desc = "Delete the current buffer" })
