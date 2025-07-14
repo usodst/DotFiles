@@ -206,6 +206,12 @@ keybindings:
   # to start Windows Terminal and Git Bash respectively.
   - commands: ["shell-exec wt"]
     bindings: ["Alt+Enter"]
+  # Open Edge
+  - commands: ["shell-exec %ProgramFiles(x86)%\\Microsoft\\Edge\\Application\\msedge.exe"]
+    bindings: ["Alt+B"]
+  # Open vscode
+  - commands: ["shell-exec %localappdata%\\Programs\\Microsoft VS Code\\Code.exe"]
+    bindings: ["Alt+C"]
 
   # Focus the workspace that last had focus.
   # - commands: ["focus --recent-workspace"]
