@@ -27,3 +27,6 @@ vim.keymap.set("n", "<M-k>", "<cmd>cprevious<CR>", { desc = "Move up one quickfi
 
 -- Buffers
 vim.keymap.set("n", "<leader>x", "<CMD>bd!<CR>", { desc = "Delete the current buffer" })
+
+-- Terminal
+vim.keymap.set("n", "<leader>tn", "<cmd>term<CR>", { desc = "Open a terminal " })
