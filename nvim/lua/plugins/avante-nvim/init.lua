@@ -5,6 +5,14 @@ return {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
+		{
+			"zbirenbaum/copilot.lua",
+			opts = {
+				suggestion = {
+					auto_trigger = true,
+				},
+			},
+		},
 		--- The below is optional, make sure to setup it properly if you have lazy=true
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
@@ -38,7 +46,7 @@ return {
 		end
 	end,
 	opts = {
-		provider = "ollama",
+		provider = "copilot",
 		ollama = {
 			endpoint = "127.0.0.1:11434",
 			model = "llama3.1",
