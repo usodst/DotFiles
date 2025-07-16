@@ -47,9 +47,11 @@ return {
 	end,
 	opts = {
 		provider = "copilot",
-		ollama = {
-			endpoint = "127.0.0.1:11434",
-			model = "llama3.1",
+		providers = {
+			ollama = {
+				endpoint = "127.0.0.1:11434",
+				model = "llama3.1",
+			},
 		},
 	},
 }
