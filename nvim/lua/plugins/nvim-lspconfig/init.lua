@@ -114,10 +114,16 @@ if vim.g.load_lsp then
 						},
 					},
 				},
-				azure_pipelines_ls = {
+				nil_ls = {},
+				lemminx = {},
+				yamlls = {
 					settings = {
 						yaml = {
 							schemas = {
+								["https://raw.githubusercontent.com/SchemaStore/schemastore/refs/heads/master/src/schemas/json/github-workflow.json"] = {
+									"*.github/workflows/*.y*l",
+									"*.github/workflows/**/*.y*l",
+								},
 								["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = {
 									"*/.Pipeline*/**/*.y*l",
 									"*/.Pipeline*/*.y*l",
@@ -132,17 +138,6 @@ if vim.g.load_lsp then
 						},
 					},
 				},
-				nil_ls = {},
-				lemminx = {},
-				-- yaml_ls = {
-				-- 	settings = {
-				-- 		yaml = {
-				-- 			schemas = {
-				-- 				kubernetes = "*.k8s.yaml",
-				-- 			},
-				-- 		},
-				-- 	},
-				-- },
 			}
 
 			require("mason").setup()
