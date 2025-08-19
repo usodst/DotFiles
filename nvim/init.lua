@@ -46,6 +46,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("TermOpen", {
+	desc = "Disable spell checking in terminal buffers",
+	group = vim.api.nvim_create_augroup("kickstart-disable-spell-in-terminal", { clear = true }),
+	callback = function()
+		vim.opt_local.spell = false
+	end,
+})
+
 -- File type detection
 vim.filetype.add({
 	extension = {
