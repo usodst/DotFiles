@@ -212,6 +212,9 @@ keybindings:
   # Open vscode
   - commands: ["shell-exec %localappdata%\\Programs\\Microsoft VS Code\\Code.exe"]
     bindings: ["Alt+C"]
+  # Shutdown machine
+  - commands: ["shell-exec shutdown.exe /s /t 0"]
+    bindings: ["Ctrl+Alt+Shift+Escape"]
 
   # Focus the workspace that last had focus.
   # - commands: ["focus --recent-workspace"]
