@@ -222,6 +222,9 @@ keybindings:
   # Shutdown machine
   - commands: ["shell-exec shutdown.exe /s /t 0"]
     bindings: ["Ctrl+Alt+Shift+Escape"]
+  # Restart machine
+  - commands: ["shell-exec shutdown.exe /r /t 0"]
+    bindings: ["Ctrl+Alt+Shift+R"]
 
   # Focus the workspace that last had focus.
   # - commands: ["focus --recent-workspace"]
