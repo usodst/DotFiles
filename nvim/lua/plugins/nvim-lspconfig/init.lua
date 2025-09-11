@@ -75,6 +75,7 @@ if vim.g.load_lsp then
 				cssls = {},
 				docker_compose_language_service = {},
 				dockerls = {},
+				gopls = {},
 				html = {},
 				jedi_language_server = {},
 				terraformls = {},
