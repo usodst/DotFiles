@@ -13,17 +13,17 @@ return {
 	},
 	opts = {
 		notify_on_error = false,
-		format_on_save = function(bufnr)
-			local disable_filetypes = { "c", "cpp" }
-			if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
-				return
-			end
-
-			return {
-				timeout_ms = 500,
-				lsp_format = "fallback",
-			}
-		end,
+		-- format_on_save = function(bufnr)
+		-- 	local disable_filetypes = { "c", "cpp" }
+		-- 	if vim.tbl_contains(disable_filetypes, vim.bo[bufnr].filetype) then
+		-- 		return
+		-- 	end
+		--
+		-- 	return {
+		-- 		timeout_ms = 500,
+		-- 		lsp_format = "fallback",
+		-- 	}
+		-- end,
 		formatters_by_ft = {
 			cs = { "csharpier" },
 			json = { "prettier" },
