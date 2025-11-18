@@ -30,3 +30,6 @@ vim.keymap.set("n", "<leader>x", "<CMD>bd!<CR>", { desc = "Delete the current bu
 
 -- Terminal
 vim.keymap.set("n", "<leader>tn", "<cmd>term<CR>", { desc = "Open a terminal " })
+
+-- Source config
+vim.keymap.set("n", "<leader>o", ":source $MYVIMRC<CR>", { desc = "Source the Neovim config" })
