@@ -6,45 +6,45 @@
       "alignment": "left",
       "segments": [
         {
-          "style": "plain",
           "template": "<#5e81ac>\u250f[</>{{ .UserName }}<#5e81ac>]</>",
           "foreground": "#88c0d0",
-          "type": "session"
+          "type": "session",
+          "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true
           },
-          "style": "plain",
           "template": "<#5e81ac>--[</>{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}<#8fbcbb> \u25cf </>{{ end }}{{ if .Staging.Changed }}<#88c0d0> \u25cf </>{{ end }}<#5e81ac>]</>",
           "foreground": "#b48ead",
-          "type": "git"
+          "type": "git",
+          "style": "plain"
         },
         {
-          "style": "plain",
           "template": "<#5e81ac>--[</>{{.Profile}}{{if .Region}}@{{.Region}}{{end}}<#5e81ac>]</>",
           "foreground": "#b48ead",
-          "type": "aws"
+          "type": "aws",
+          "style": "plain"
         },
         {
-          "style": "plain",
           "template": "<#5e81ac>--[</>{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}<#5e81ac>]</>",
           "foreground": "#b48ead",
-          "type": "kubectl"
+          "type": "kubectl",
+          "style": "plain"
         },
         {
-          "style": "plain",
           "template": "<#5e81ac>[</>\uf0e7<#5e81ac>]</>",
           "foreground": "#d8dee9",
-          "type": "root"
+          "type": "root",
+          "style": "plain"
         },
         {
-          "style": "plain",
           "template": "<#5e81ac>[x</>{{ reason .Code }}<#5e81ac>]</>",
           "foreground": "#d8dee9",
-          "type": "status"
+          "type": "status",
+          "style": "plain"
         }
       ]
     },
@@ -53,13 +53,13 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "style": "full"
           },
-          "style": "plain",
           "template": "<#5e81ac>\u2516[</>{{ .Path }}<#5e81ac>]</>",
           "foreground": "#88c0d0",
-          "type": "path"
+          "type": "path",
+          "style": "plain"
         }
       ],
       "newline": true
@@ -69,15 +69,15 @@
       "alignment": "left",
       "segments": [
         {
-          "style": "plain",
           "template": " \ue602 ",
           "foreground": "#5e81ac",
-          "type": "text"
+          "type": "text",
+          "style": "plain"
         }
       ],
       "newline": true
     }
   ],
-  "version": 3,
+  "version": 4,
   "final_space": true
 }
