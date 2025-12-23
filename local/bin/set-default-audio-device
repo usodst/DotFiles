@@ -16,9 +16,11 @@ fi
 case "$1" in
 	sink)
 		list=sinks
+		prompt="Select an output"
 		;;
 	source)
 		list=sources
+		prompt="Select an input"
 		;;
 esac
 
@@ -28,7 +30,7 @@ while read -r name description; do
 	devices[$description]=$name
 done <<< "$(pactl -f json list "$list" | jq -r ".[] | [.name, .description] | @tsv")"
 
-selection=$(printf "%s\n" "${!devices[@]}" | wofi --dmenu)
+selection=$(printf "%s\n" "${!devices[@]}" | wofi -p "$prompt" --dmenu)
 
 if [[ -z $selection ]]; then
 	echo "Invalid selection" 1>&2
