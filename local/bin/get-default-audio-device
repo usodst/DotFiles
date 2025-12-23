@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+usage() {
+	echo "$0 <sink|source>" 1>&2
+}
+
+if [[ "$#" -lt 1 ]]; then
+	usage
+fi
+
+pactl get-default-$1

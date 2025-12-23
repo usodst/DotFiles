@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+usage() {
+	echo "Usage $0 <sink|source>" 1>&2
+	exit 1
+}
+
+if [[ "$#" -lt 1 ]]; then
+	usage
+fi
+
+if [[ "$1" != sink ]] && [[ "$1" != source ]]; then
+	usage
+fi
+
+case "$1" in
+	sink)
+		list=sinks
+		;;
+	source)
+		list=sources
+		;;
+esac
+
+declare -A devices
+
+while read -r name description; do
+	devices[$description]=$name
+done <<< "$(pactl -f json list "$list" | jq -r ".[] | [.name, .description] | @tsv")"
+
+selection=$(printf "%s\n" "${!devices[@]}" | wofi --dmenu)
+
+if [[ -z $selection ]]; then
+	echo "Invalid selection" 1>&2
+	exit 1
+fi
+
+pactl set-default-$1 "${devices[$selection]}"
+notify-send "Set default $1 to $selection"
