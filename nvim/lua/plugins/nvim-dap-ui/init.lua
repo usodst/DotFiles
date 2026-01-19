@@ -13,16 +13,19 @@ return {
 		local gdb = require("plugins.dap.gdb")
 		local coreclr = require("plugins.dap.coreclr")
 		local powershell = require("plugins.dap.powershell")
+		local go = require("plugins.dap.go")
 
 		dap.adapters.gdb = gdb.adapter
 		dap.adapters.coreclr = coreclr.adapter
 		dap.adapters.powershell = powershell.adapter
+		dap.adapters.go = go.adapter
 
 		dap.configurations.c = gdb.config
 		dap.configurations.cpp = gdb.config
 		dap.configurations.cs = coreclr.config
 		dap.configurations.ps1 = powershell.config
 		dap.configurations.psm1 = powershell.config
+		dap.configurations.go = go.config
 
 		-- Key bindings
 		vim.keymap.set("n", "<leader>dc", function()
