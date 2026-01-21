@@ -24,6 +24,7 @@ M.config = {
 			})
 			return (path and path ~= "") and path or dap.ABORT
 		end,
+		args = { "-debug" },
 		cwd = "${workspaceFolder}",
 	},
 }
