@@ -15,6 +15,7 @@ M.config = {
 		name = "Launch",
 		type = "go",
 		request = "launch",
+		outputMode = "remote",
 		program = function()
 			local dap = require("dap")
 			local path = vim.fn.input({
