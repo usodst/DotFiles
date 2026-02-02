@@ -84,6 +84,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 
     alias k='kubectl'
+
+    # Colors for man pages
+    export MANPAGER="less -R --use-color -Dd+r -Du+b"
+    export GROFF_NO_SGR=1
 fi
 
 # colored GCC warnings and errors
@@ -133,15 +137,17 @@ alias tf="terraform"
 alias vim="nvim"
 
 # Git aliases
-alias gs="git status"
 alias ga="git add"
 alias gb="git branch"
-alias gf="git fetch -p"
 alias gc="git commit"
-alias gco="git checkout"
 alias gcb="git checkout -b"
-alias gpush="git push"
+alias gco="git checkout"
+alias gd="git diff"
+alias gf="git fetch -p"
 alias gpull="git pull -r"
+alias gpush="git push"
+alias grc="git rebase --continue"
+alias gs="git status"
 
 export PATH="/home/alexe/.cargo/bin/:$PATH"
 export PATH="$HOME/go/bin:$PATH"
