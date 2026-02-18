@@ -66,6 +66,12 @@ export PATH=/usr/local/go/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# Commas function from Dave Eddy
+# https://github.com/bahamas10
+commas() {
+    sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'
+}
+
 # VI mode
 set -o vi
 
