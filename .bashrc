@@ -122,6 +122,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Commas function from Dave Eddy
+# https://github.com/bahamas10
+commas() {
+    sed -e :a -e 's/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'
+}
+
 # Editor
 EDITOR="/usr/bin/nvim"
 
