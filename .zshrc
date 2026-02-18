@@ -60,7 +60,9 @@ alias gs="git status"
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export PATH=~/.cargo/bin/:$PATH
+export PATH=~/.dotnet/tools/:$PATH
 export PATH=~/.local/bin/:$PATH
+export PATH=/usr/local/go/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
