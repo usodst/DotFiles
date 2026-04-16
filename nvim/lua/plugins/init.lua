@@ -19,6 +19,7 @@ require("lazy").setup({
 	require("plugins.nvim-colorizer"),
 	require("plugins.nvim-dap-ui"),
 	require("plugins.nvim-lspconfig"),
+	require("plugins.nvim-treesitter"),
 	require("plugins.oil-nvim"),
 	require("plugins.telescope-nvim"),
 	require("plugins.todo-comments-nvim"),
