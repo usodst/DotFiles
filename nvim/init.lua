@@ -7,6 +7,7 @@ vim.g.load_lsp = true
 -- Options
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.foldlevelstart = 99
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
