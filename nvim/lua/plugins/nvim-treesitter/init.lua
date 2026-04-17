@@ -11,6 +11,7 @@ return {
 			"c_sharp",
 			"cpp",
 			"dockerfile",
+			"json",
 			"lua",
 			"markdown",
 			"markdown_inline",
