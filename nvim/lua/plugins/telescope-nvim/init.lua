@@ -42,6 +42,13 @@ return {
 		vim.keymap.set("n", "<leader>sg", function()
 			builtin.live_grep({ hidden = true })
 		end, { desc = "[S]earch by [G]rep" })
+		vim.keymap.set("n", "<leader>sG", function()
+			vim.ui.input({ prompt = "Glob filter (e.g. *.lua): " }, function(glob)
+				if glob and glob ~= "" then
+					builtin.live_grep({ hidden = true, glob_pattern = glob })
+				end
+			end)
+		end, { desc = "[S]earch by [G]rep with glob filter" })
 		vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
 		vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[S]earch [R]esume" })
 		vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
