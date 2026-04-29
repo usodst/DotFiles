@@ -10,6 +10,7 @@ return {
 			"c",
 			"c_sharp",
 			"cpp",
+			"csv",
 			"dockerfile",
 			"json",
 			"lua",
