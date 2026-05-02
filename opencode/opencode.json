@@ -9,7 +9,7 @@
     },
     "AzureDevOps": {
       "type": "local",
-      "command": ["npx", "-y", "@azure-devops/mcp", "iarx-services"],
+      "command": ["npx", "-y", "@azure-devops/mcp", ""],
       "enabled": true
     }
   },
