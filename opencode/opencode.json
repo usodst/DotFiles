@@ -1,6 +1,5 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/qwn3:30b",
   "mcp": {
     "Azure": {
       "type": "local",
