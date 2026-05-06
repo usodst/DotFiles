@@ -15,7 +15,8 @@
       "network",
       "pulseaudio",
       "cpu",
-      "battery"
+      "battery",
+      "group/power-menu"
     ],
     "hyprland/workspaces": {
       "on-click": "activate",
@@ -116,5 +117,43 @@
     "tray": {
       "icon-size": 12,
       "spacing": 12
+    },
+    "group/power-menu": {
+      "orientation": "inherit",
+      "drawer": {
+        "transition-duration": 600,
+        "children-class": "power-group-item"
+      },
+      "modules": [
+        "custom/power-icon",
+        "custom/shutdown",
+        "custom/restart",
+        "custom/suspend",
+        "custom/lock"
+      ]
+    },
+    "custom/power-icon": {
+      "format": "󱐋 ",
+      "tooltip": false
+    },
+    "custom/lock": {
+      "format": " ",
+      "tooltip": false,
+      "on-click": "hyprlock"
+    },
+    "custom/shutdown": {
+      "format": " ",
+      "tooltip": false,
+      "on-click": "systemctl poweroff"
+    },
+    "custom/restart": {
+      "format": " ",
+      "tooltip": false,
+      "on-click": "systemctl reboot"
+    },
+    "custom/suspend": {
+      "format": "⭘ ",
+      "tooltip": false,
+      "on-click": "systemctl suspend"
     }
 }
