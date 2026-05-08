@@ -56,3 +56,14 @@ window#waybar {
 tooltip {
   padding: 2px;
 }
+
+#custom-media-previous,
+#custom-media-play,
+#custom-media-title,
+#custom-media-next {
+  margin: 0 10px;
+}
+
+#custom-media-play {
+  min-width: 20px;
+}

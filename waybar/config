@@ -7,6 +7,7 @@
       "hyprland/workspaces"
     ],
     "modules-center": [
+      "group/media",
       "clock"
     ],
     "modules-right": [
@@ -155,5 +156,36 @@
       "format": "⭘ ",
       "tooltip": false,
       "on-click": "systemctl suspend"
+    },
+    "group/media": {
+      "orientation": "inherit",
+      "spacing": 12,
+      "modules": [
+        "custom/media-previous",
+        "custom/media-play",
+        "custom/media-title",
+        "custom/media-next"
+      ]
+    },
+    "custom/media-previous": {
+      "format": " 󰒮 ",
+      "tooltip": false,
+      "on-click": "playerctl previous"
+    },
+    "custom/media-play": {
+      "exec": "if [ \"$(playerctl status 2>/dev/null)\" = \"Playing\" ]; then echo ' 󰏤 '; else echo ' 󰐊 '; fi",
+      "interval": 1,
+      "tooltip": false,
+      "on-click": "playerctl play-pause"
+    },
+    "custom/media-title": {
+      "exec": "echo \" $(playerctl metadata --format '{{title}} - {{artist}}' 2>/dev/null || echo 'No music') \"",
+      "interval": 1,
+      "tooltip": false
+    },
+    "custom/media-next": {
+      "format": " 󰒭 ",
+      "tooltip": false,
+      "on-click": "playerctl next"
     }
 }
