@@ -134,11 +134,12 @@ EDITOR="/usr/bin/nvim"
 alias attach="tmux attach"
 alias clar="clear"
 alias clera="clear"
-alias d="docker"
+alias d="docker" 
 alias kube="kubectl"
 alias lg="lazygit"
 alias tf="terraform"
 alias vim="nvim"
+alias v="nvim"
 
 # Git aliases
 alias ga="git add"
