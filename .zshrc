@@ -27,7 +27,6 @@ EDITOR="/usr/bin/nvim"
 
 # User aliases
 alias attach="tmux attach"
-alias cat="bat"
 alias clar="clear"
 alias clera="clear"
 alias d="docker"
