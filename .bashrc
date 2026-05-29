@@ -160,6 +160,9 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 # VI mode
 set -o vi
+#
+# Enable oh-my-posh
+eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/nordtron.omp.json)"
 
 # Enable zoxide
 eval "$(zoxide init bash)"
