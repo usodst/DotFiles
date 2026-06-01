@@ -155,6 +155,7 @@ alias grc="git rebase --continue"
 alias gs="git status"
 
 export PATH="/home/alexe/.cargo/bin/:$PATH"
+export PATH=~/.local/bin/:$PATH
 export PATH="$HOME/go/bin:$PATH"
 export EDITOR="nvim"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
