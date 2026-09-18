@@ -163,8 +163,8 @@
       "modules": [
         "custom/media-previous",
         "custom/media-play",
-        "custom/media-title",
-        "custom/media-next"
+        "custom/media-next",
+        "custom/media-title"
       ]
     },
     "custom/media-previous": {
