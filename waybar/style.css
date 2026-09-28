@@ -1,5 +1,6 @@
-@define-color foreground #d8dee9;
-@define-color background #2e3440;
+@define-color foreground #c2d4cf;
+@define-color background #0a1214;
+@define-color accent #5ec4b0;
 
 * {
   color: @foreground;
@@ -37,6 +38,10 @@ window#waybar {
   margin: 0 1.5px;
 }
 
+#workspaces button.active {
+  color: @accent;
+}
+
 #tray,
 #cpu,
 #battery,
@@ -55,6 +60,8 @@ window#waybar {
 
 tooltip {
   padding: 2px;
+  background-color: @background;
+  color: @foreground;
 }
 
 #custom-media-previous,
