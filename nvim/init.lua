@@ -66,3 +66,5 @@ vim.filetype.add({
 		["[d|D]ocker[Ff]ile"] = "dockerfile",
 	},
 })
+
+vim.cmd.colorscheme("default")
