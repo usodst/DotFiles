@@ -1,0 +1,23 @@
+{
+    "name": "Dark",
+    "background": "#0A1214",
+    "foreground": "#C2D4CF",
+    "cursorColor": "#5EC4B0",
+    "selectionBackground": "#1A2E32",
+    "black": "#121C1E",
+    "red": "#8F4E52",
+    "green": "#5A8F6E",
+    "yellow": "#B8A878",
+    "blue": "#4A7A8C",
+    "purple": "#6E5E7A",
+    "cyan": "#4A9E92",
+    "white": "#C2D4CF",
+    "brightBlack": "#2A3C40",
+    "brightRed": "#B06A6E",
+    "brightGreen": "#7AB892",
+    "brightYellow": "#D4C49A",
+    "brightBlue": "#6A9EB0",
+    "brightPurple": "#8E7E9A",
+    "brightCyan": "#5EC4B0",
+    "brightWhite": "#E0ECE8"
+}

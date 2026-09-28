@@ -1,29 +1,27 @@
-/* https://github.com/alxndr13/wofi-nord-theme */
-
 * {
 	font-family: "Hack", monospace;
 }
 
 window {
-	background-color: #3B4252;
+	background-color: #0a1214;
 }
 
 #input {
 	margin: 5px;
 	border-radius: 0px;
 	border: none;
-	background-color: #3B4252;
-	color: white;
+	background-color: #121c1e;
+	color: #c2d4cf;
 }
 
 #inner-box {
-	background-color: #383C4A;
+	background-color: #0a1214;
 }
 
 #outer-box {
 	margin: 2px;
 	padding: 10px;
-	background-color: #383C4A;
+	background-color: #0a1214;
 }
 
 #scroll {
@@ -32,17 +30,18 @@ window {
 
 #text {
 	padding: 4px;
-	color: white;
+	color: #c2d4cf;
 }
 
 #entry:nth-child(even) {
-	background-color: #404552;
+	background-color: #121c1e;
 }
 
 #entry:selected {
-	background-color: #4C566A;
+	background-color: #1a2e32;
 }
 
 #text:selected {
 	background: transparent;
+	color: #5ec4b0;
 }

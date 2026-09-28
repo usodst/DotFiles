@@ -1,1 +1,9 @@
 default-timeout=15000
+
+background-color=#0a1214ee
+text-color=#c2d4cf
+border-color=#5ec4b0
+border-size=2
+border-radius=8
+padding=10
+progress-color=over #4a9e92
