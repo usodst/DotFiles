@@ -64,6 +64,33 @@ tooltip {
   color: @foreground;
 }
 
+menu {
+  background-color: @background;
+  color: @foreground;
+  border: 1px solid alpha(@foreground, 0.15);
+  padding: 4px;
+}
+
+menu menuitem {
+  color: @foreground;
+  padding: 4px 12px;
+  border-radius: 8px;
+}
+
+menu menuitem:hover {
+  background-color: alpha(@accent, 0.3);
+}
+
+menu menuitem:disabled label {
+  color: alpha(@foreground, 0.45);
+}
+
+menu separator {
+  background-color: alpha(@foreground, 0.2);
+  min-height: 1px;
+  margin: 4px 8px;
+}
+
 #custom-media-previous,
 #custom-media-play,
 #custom-media-title,
