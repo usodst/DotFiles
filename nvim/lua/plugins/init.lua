@@ -24,7 +24,6 @@ require("lazy").setup({
 	require("plugins.telescope-nvim"),
 	require("plugins.todo-comments-nvim"),
 	require("plugins.tokyonight-nvim"),
-	require("plugins.transparent-nvim"),
 	require("plugins.vim-sleuth"),
 	require("plugins.which-key-nvim"),
 }, {
