@@ -1,3 +1,4 @@
 nvim/spell/*
 nvim/lazy-lock.json
 glzr/**/errors.log
+opencode/package-lock.json
