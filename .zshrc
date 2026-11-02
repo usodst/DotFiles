@@ -29,6 +29,7 @@ EDITOR="/usr/bin/nvim"
 alias attach="tmux attach"
 alias clar="clear"
 alias clera="clear"
+alias codellama="ollama run codellama:7b"
 alias d="docker"
 alias ip="ip -c=auto"
 alias k="kubectl"
@@ -64,6 +65,7 @@ export PATH=~/.local/bin/:$PATH
 export PATH=/usr/local/go/bin:$PATH
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export OLLAMA_HOST=127.0.0.1:11434
 
 # Commas function from Dave Eddy
 # https://github.com/bahamas10
