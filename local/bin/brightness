@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Adjust external monitor brightness over DDC/CI.
+
+set -euo pipefail
+
+usage() {
+	echo "Usage: $0 <+N|-N|N|up|down> [percent]" 1>&2
+	echo "  $0 +5      increase by 5" 1>&2
+	echo "  $0 -5      decrease by 5" 1>&2
+	echo "  $0 40      set absolute to 40" 1>&2
+	echo "  $0 up [N]  increase by N (default 5)" 1>&2
+	echo "  $0 down [N] decrease by N (default 5)" 1>&2
+	exit 1
+}
+
+if [[ "$#" -lt 1 ]]; then
+	usage
+fi
+
+# Prefer focused Hyprland output; fall back to first connected connector with an i2c bus.
+resolve_bus() {
+	local output="" connector bus_path
+
+	if command -v hyprctl >/dev/null 2>&1; then
+		output=$(hyprctl monitors -j 2>/dev/null | jq -r '
+			(map(select(.focused == true))[0].name)
+			// (.[0].name)
+			// empty
+		')
+	fi
+
+	if [[ -n "$output" ]]; then
+		for connector in /sys/class/drm/card*-"$output"; do
+			[[ -e "$connector" ]] || continue
+			bus_path=$(compgen -G "$connector"/i2c-* | head -n1 || true)
+			if [[ -n "$bus_path" ]]; then
+				basename "$bus_path" | sed 's/^i2c-//'
+				return 0
+			fi
+		done
+	fi
+
+	# Fallback: first DRM connector that has an i2c sibling and is connected
+	for connector in /sys/class/drm/card*-*; do
+		[[ -e "$connector/status" ]] || continue
+		[[ "$(cat "$connector/status" 2>/dev/null)" == "connected" ]] || continue
+		bus_path=$(compgen -G "$connector"/i2c-* | head -n1 || true)
+		if [[ -n "$bus_path" ]]; then
+			basename "$bus_path" | sed 's/^i2c-//'
+			return 0
+		fi
+	done
+
+	return 1
+}
+
+step=5
+case "$1" in
+	up)
+		[[ "$#" -ge 2 ]] && step="$2"
+		vcp_args=(10 + "$step")
+		;;
+	down)
+		[[ "$#" -ge 2 ]] && step="$2"
+		vcp_args=(10 - "$step")
+		;;
+	+[0-9]*)
+		vcp_args=(10 + "${1#+}")
+		;;
+	-[0-9]*)
+		vcp_args=(10 - "${1#-}")
+		;;
+	[0-9]*)
+		vcp_args=(10 "$1")
+		;;
+	*)
+		usage
+		;;
+esac
+
+bus=$(resolve_bus) || {
+	echo "Could not resolve monitor i2c bus" 1>&2
+	notify-send -u critical "Brightness" "No DDC-capable monitor found"
+	exit 1
+}
+
+# --bus avoids a full detect (~seconds). Low sleep multiplier keeps OSD-feel snappy.
+ddcutil --bus "$bus" --sleep-multiplier .1 setvcp "${vcp_args[@]}" >/dev/null
+
+# Brief form: "VCP 10 C <current> <max>"
+read -r _ _ _ current max <<<"$(ddcutil --bus "$bus" --sleep-multiplier .1 getvcp 10 --brief)"
+percent=$((current * 100 / max))
+
+notify-send -h string:x-canonical-private-synchronous:brightness \
+	-h "int:value:$percent" \
+	"Brightness" "${percent}%"
