@@ -169,3 +169,9 @@ eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/nordtron.omp.json)"
 
 # Enable zoxide
 eval "$(zoxide init bash)"
+
+# Source completions
+source ~/.bash_completion
+
+# Any sensitive settings
+[[ -e ~/.env ]] && source ~/.env
