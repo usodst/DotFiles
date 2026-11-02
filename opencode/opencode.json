@@ -10,6 +10,11 @@
       "type": "local",
       "command": ["npx", "-y", "@azure-devops/mcp", ""],
       "enabled": true
+    },
+    "Playwright": {
+      "type": "local",
+      "command": ["npx", "@playwright/mcp@latest", "--save-session"],
+      "enabled": true
     }
   },
   "provider": {
