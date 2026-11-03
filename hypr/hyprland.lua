@@ -9,23 +9,15 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-------------------
----- MONITORS ----
-------------------
+-- Import utility functions
+require("utils")
 
--- See https://wiki.hypr.land/Configuring/Basics/Monitors/
-hl.monitor({
-	output = "DP-4",
-	mode = "3840x2160@240HZ",
-	position = "0x0",
-	scale = 1,
-	bitdepth = 10,
-	supports_wide_color = true,
-	supports_hdr = true,
-	cm = "hdr",
-	sdr_min_luminance = 0.05,
-	sdr_max_luminance = 200,
-})
+-- Import hardware specific config
+if hostname() == "arch" then
+	require("desktop")
+elseif hostname() == "arch-surface" then
+	require("surface")
+end
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -47,14 +39,14 @@ local code = "cursor --enable-features=UseOzonePlatform --ozone-platform=wayland
 hl.on("hyprland.start", function()
 	hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"')
 	hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"')
-	hl.exec_cmd("waybar & hypridle & mako & nm-applet & hyprpaper &")
+	hl.exec_cmd("waybar & hypridle 2>/tmp/hyprlog.txt & mako & hyprpaper &")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("wl-clip-persist --clipboard regular")
 	hl.exec_cmd("/usr/lib/pam_kwallet_init")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 	hl.exec_cmd("solaar -w hide")
-	hl.exec_cmd("[workspace 2] vesktop")
-	hl.exec_cmd("[workspace 3] steam")
+	hl.exec_cmd("vesktop")
+	hl.exec_cmd("steam")
 end)
 
 -------------------------------
@@ -258,9 +250,16 @@ hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(code))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
-hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + CTRL + ESCAPE", hl.dsp.dpms({action = "disable"}))
+hl.bind(
+	mainMod .. " + SHIFT + E",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+)
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.exec_cmd("hyprlock >/tmp/hyprlock.txt 2>&1"))
+hl.bind(mainMod .. " + CTRL + ESCAPE", function()
+	hl.timer(function()
+		hl.dispatch(hl.dsp.dpms({ action = "disable" }))
+	end, { timeout = 500, type = "oneshot" })
+end)
 hl.bind(mainMod .. " + SHIFT + ESCAPE", hl.dsp.exec_cmd("systemctl suspend"))
 hl.bind(mainMod .. " + SHIFT + CTRL + ESCAPE", hl.dsp.exec_cmd("systemctl poweroff"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen(0))
@@ -269,7 +268,7 @@ hl.bind(mainMod .. " + SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi -dmenu | cliphist decode | wl-copy"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
--- hl.bind(mainMod .. " + J",      hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + Z", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
@@ -304,7 +303,7 @@ end)
 for i = 1, 10 do
 	local key = i % 10 -- 10 maps to key 0
 	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i, follow = false }))
 end
 
 -- Example special workspace (scratchpad)
@@ -340,12 +339,15 @@ hl.bind(
 	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
 	{ locked = true, repeating = true }
 )
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+-- External monitor brightness via DDC/CI (see ~/.local/bin/brightness)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("~/.local/bin/brightness up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("~/.local/bin/brightness down"), { locked = true, repeating = true })
 
 -- Manual brightness control
-hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"))
-hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"))
+hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("~/.local/bin/brightness up"), { repeating = true })
+hl.bind(mainMod .. " + COMMA", hl.dsp.exec_cmd("~/.local/bin/brightness down"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.exec_cmd("~/.local/bin/brightness 100"), { repeating = true })
+hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.exec_cmd("~/.local/bin/brightness 0"), { repeating = true })
 
 -- Change audio input/output
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("~/.local/bin/set-default-audio-device sink"))
@@ -369,14 +371,13 @@ hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 -- Example window rules that are useful
 
-local suppressMaximizeRule = hl.window_rule({
+hl.window_rule({
 	-- Ignore maximize requests from all apps. You'll probably like this.
 	name = "suppress-maximize-events",
 	match = { class = ".*" },
 
 	suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
 	-- Fix some dragging issues with XWayland
@@ -402,9 +403,36 @@ hl.window_rule({
 	float = true,
 })
 
+-- StartCraft 2 fix
+hl.window_rule({
+	match = { title = "StarCraft II" },
+	float = true,
+	center = true,
+	stay_focused = true,
+})
+
+-- Vesktop workspace 2
+hl.window_rule({
+	match = { class = "^(vesktop)$" },
+	workspace = "2 silent",
+})
+
+-- Steam workspace 3
+hl.window_rule({
+	match = { class = "^(steam_app.*|steam)$" },
+	workspace = "3 silent",
+})
+
 -- Fix blurriness with some XWayland apps
 hl.config({
 	xwayland = {
 		force_zero_scaling = true,
+	},
+})
+
+-- Fix cursor brightness
+hl.config({
+	cursor = {
+		inactive_timeout = 10,
 	},
 })
