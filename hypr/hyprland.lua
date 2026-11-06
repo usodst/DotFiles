@@ -290,9 +290,12 @@ hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Resize active window submap
 hl.bind(mainMod .. " + R", hl.dsp.submap("resize"))
-hl.define_submap("resize", "reset", function()
-	hl.bind("L", hl.dsp.exec_cmd("hyprctl dispatch resizeactive 100 0"))
-	hl.bind("H", hl.dsp.exec_cmd("hyprctl dispatch resizeactive -100 0"))
+hl.define_submap("resize", function()
+	local resizeOpts = { repeating = true }
+	hl.bind("L", hl.dsp.window.resize({ x = 100, y = 0, relative = true }), resizeOpts)
+	hl.bind("H", hl.dsp.window.resize({ x = -100, y = 0, relative = true }), resizeOpts)
+	hl.bind("J", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), resizeOpts)
+	hl.bind("K", hl.dsp.window.resize({ x = 0, y = -100, relative = true }), resizeOpts)
 	hl.bind("ESCAPE", hl.dsp.submap("reset"))
 	hl.bind("RETURN", hl.dsp.submap("reset"))
 	hl.bind("Q", hl.dsp.submap("reset"))
