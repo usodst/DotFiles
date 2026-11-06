@@ -11,6 +11,7 @@
       "clock"
     ],
     "modules-right": [
+      "hyprland/submap",
       "group/tray-expander",
       "bluetooth",
       "network",
@@ -100,6 +101,11 @@
       "on-click-right": "pamixer -t",
       "ignored-sinks": ["Easy Effects Sink"]
     },
+    "hyprland/submap": {
+      "format": "{}",
+      "max-length": 8,
+      "tooltip": false
+    },
     "group/tray-expander": {
       "orientation": "inherit",
       "drawer": {
@@ -112,7 +118,7 @@
       ]
     },
     "custom/expand-icon": {
-      "format": " ",
+      "format": "",
       "tooltip": false
     },
     "tray": {
