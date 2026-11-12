@@ -35,7 +35,7 @@ vim.opt.winborder = "rounded"
 require("plugins")
 
 -- Disable LSP Logging
-vim.lsp.set_log_level("OFF")
+vim.lsp.log.set_level("OFF")
 
 -- Mappings
 require("mappings")
@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		vim.hl.hl_op()
 	end,
 })
 
