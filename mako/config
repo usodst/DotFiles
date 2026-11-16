@@ -7,3 +7,4 @@ border-size=2
 border-radius=8
 padding=10
 progress-color=over #4a9e92
+layer=overlay
