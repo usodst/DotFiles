@@ -79,6 +79,7 @@ if vim.g.load_lsp then
 				html = {},
 				jedi_language_server = {},
 				terraformls = {},
+				just = {},
 				lua_ls = {
 					settings = {
 						Lua = {
