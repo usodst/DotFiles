@@ -44,16 +44,15 @@ window#waybar {
 
 #submap,
 #tray,
-#cpu,
+/* #cpu, */
 #battery,
-#network,
-#bluetooth,
+/* #network, */
 #pulseaudio,
 #clock,
-#custom-power-menu {
+/* #custom-power-menu {
   min-width: 12px;
   margin: 0 7.5px;
-}
+} */
 
 #custom-expand-icon {
   margin-right: 12px;
