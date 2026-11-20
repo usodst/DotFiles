@@ -28,23 +28,23 @@ vim.keymap.set("n", "<M-k>", "<cmd>cprevious<CR>", { desc = "Move up one quickfi
 -- Buffers
 vim.keymap.set("n", "<leader>x", "<CMD>bd!<CR>", { desc = "Delete the current buffer" })
 vim.keymap.set("n", "<leader>X", function()
-	vim.ui.input({ prompt = "Delete buffers matching pattern: " }, function(pattern)
-		if pattern == "" then
-			return
-		end
-		local deleted = 0
-		local ok, re = pcall(vim.regex, pattern)
-		if not ok then
-			return
-		end
-		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-			local name = vim.api.nvim_buf_get_name(buf)
-			if re:match_str(name) then
-				vim.api.nvim_buf_delete(buf, { force = true })
-				deleted = deleted + 1
+	vim.ui.input({ prompt = "Glob filter (e.g. *.lua): " }, function(glob)
+		if glob and glob ~= "" then
+			local deleted = 0
+			for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+				if glob == "*" then
+					vim.api.nvim_buf_delete(buf, { force = true })
+					deleted = deleted + 1
+				else
+					local name = vim.api.nvim_buf_get_name(buf)
+					if name:match(glob) then
+						vim.api.nvim_buf_delete(buf, { force = true })
+						deleted = deleted + 1
+					end
+				end
 			end
+			vim.notify(string.format("Deleted %d buffer(s) matching '%s'", deleted, glob))
 		end
-		vim.notify(string.format("Deleted %d buffer(s) matching '%s'", deleted, pattern))
 	end)
 end, { desc = "Delete buffers matching a pattern" })
 
