@@ -30,6 +30,20 @@ local menu = "wofi --show drun"
 local browser = "librewolf"
 local code = "cursor --enable-features=UseOzonePlatform --ozone-platform=wayland"
 
+-------------------------------
+---- ENVIRONMENT VARIABLES ----
+-------------------------------
+
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
+
+hl.env("GTK_THEME", "Adwaita:dark")
+hl.env("QT_QPA_PLATFORMTHEME", "kde")
+hl.env("QT_STYLE_OVERRIDE", "Breeze")
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
+hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_SIZE", "24")
+
+
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -39,6 +53,7 @@ local code = "cursor --enable-features=UseOzonePlatform --ozone-platform=wayland
 hl.on("hyprland.start", function()
 	hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"')
 	hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"')
+	hl.exec_cmd("dbus-update-activation-environment --systemd GTK_THEME")
 	hl.exec_cmd("waybar & hypridle 2>/tmp/hyprlog.txt & mako & hyprpaper &")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("nm-applet")
@@ -50,18 +65,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("vesktop")
 	hl.exec_cmd("steam")
 end)
-
--------------------------------
----- ENVIRONMENT VARIABLES ----
--------------------------------
-
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Environment-variables/
-
-hl.env("QT_QPA_PLATFORMTHEME", "kde")
-hl.env("QT_STYLE_OVERRIDE", "Breeze")
-hl.env("QT_QPA_PLATFORM", "wayland;xcb")
-hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
 
 -----------------------
 ----- PERMISSIONS -----
