@@ -5,14 +5,6 @@ return {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		{
-			"zbirenbaum/copilot.lua",
-			opts = {
-				suggestion = {
-					auto_trigger = true,
-				},
-			},
-		},
 		--- The below is optional, make sure to setup it properly if you have lazy=true
 		{
 			"MeanderingProgrammer/render-markdown.nvim",
@@ -38,6 +30,7 @@ return {
 		},
 	},
 	event = "VeryLazy",
+	version = false,
 	build = function()
 		if vim.fn.has("win32") == 1 then
 			return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
@@ -46,11 +39,14 @@ return {
 		end
 	end,
 	opts = {
-		provider = "copilot",
+		provider = "ollama",
 		providers = {
 			ollama = {
 				endpoint = "127.0.0.1:11434",
-				model = "llama3.1",
+				model = "gpt-oss:20b",
+				hide_in_model_selector = false,
+				disable_tools = false,
+				-- mode = "legacy"
 			},
 		},
 	},

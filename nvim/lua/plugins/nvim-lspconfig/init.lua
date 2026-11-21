@@ -118,6 +118,7 @@ if vim.g.load_lsp then
 				},
 				nil_ls = {},
 				lemminx = {},
+				ts_ls = {},
 				yamlls = {
 					settings = {
 						yaml = {
