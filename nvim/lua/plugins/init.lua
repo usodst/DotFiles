@@ -8,7 +8,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("plugins.auto-session"),
 	require("plugins.Comment-nvim"),
-	require("plugins.avante-nvim"),
 	require("plugins.conform-nvim"),
 	require("plugins.gitsigns-nvim"),
 	require("plugins.harpoon"),
